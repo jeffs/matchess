@@ -1,0 +1,33 @@
+:root {
+  --tile-size: 10vmin;
+}
+
+@media (min-width: 480px) {
+  :root {
+    --tile-size: 56px;
+  }
+}
+
+.tile {
+  border-radius: var(--border-radius);
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background-color: rgb(var(--surface-dp1));
+  color: rgb(var(--primary));
+
+  box-shadow: var(--box-shadow-dp1);
+
+  height: var(--tile-size);
+  width: var(--tile-size);
+  font: calc(var(--tile-size) * 5 / 6) Georgia, sans-serif;
+
+  user-select: none;
+  text-align: center;
+}
+
+.tile--dp2 {
+  background-color: rgb(var(--surface-dp2));
+  box-shadow: var(--box-shadow-dp2);
+}

@@ -1,0 +1,7 @@
+:root[data-theme="theme.DARK"] {
+  --primary: 128, 203, 196;     /* teal200 */
+  --surface: 33, 33, 33;        /* gray900 */
+  --surface-dp1: 44, 44, 44;    /* gray900 + ~5% white overlay */
+  --surface-dp2: 49, 49, 49;    /* gray900 + ~7% white overlay */
+  --bg: 18, 18, 18; 
+}

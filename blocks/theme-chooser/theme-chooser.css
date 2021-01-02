@@ -1,0 +1,46 @@
+.theme-chooser {
+  background-color: rgb(var(--surface));
+  color: rgb(var(--primary));
+  margin: 8px;
+}
+
+/* Modified from https://www.filamentgroup.com/lab/select-css.html */
+.theme-chooser__select {
+  background-color: rgb(var(--surface-dp1));
+  color: rgb(var(--primary));
+
+  display: block;
+  padding: .5em 1.8em .5em .8em;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: var(--box-shadow-dp1);
+  border-radius: var(--border-radius);
+
+  /* TODO: Does `appearance: none` mess up screen readers?  (If you remove
+   * this, also remove `*-appearance: none` under Compatibility below).
+   */
+  appearance: none;
+
+  /* Triangle icon. */
+  background-image: url('theme-chooser__triangle.svg');
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+}
+.theme-chooser__select:hover {
+  /* TODO: Set background color on hover per material guidelines. */
+  background-color: rgb(var(--surface-dp2));
+}
+.theme-chooser__select:focus {
+  /* TODO: Set background color on focus per material guidelines. */
+}
+
+/** Compatibility with old browsers. */
+.theme-chooser__select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.theme-chooser__select::-ms-expand {
+  /** Hide the default triangle icon on old Microsoft browsers. */
+  display: none;
+}

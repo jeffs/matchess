@@ -1,0 +1,17 @@
+:root {
+  --grid-gutter: 4px;
+}
+
+.grid {
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+
+  background-color: rgb(var(--surface-dp1));
+  box-shadow: var(--box-shadow-dp1);
+
+  position: relative;
+}
+
+.grid__tile {
+  position: absolute;
+}

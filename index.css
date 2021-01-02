@@ -1,0 +1,54 @@
+/* Imports in order of increasing dependency.
+ *
+ * Our policy is that styles may depend on prior, but not subsequent, imports.
+ */
+@import "themes/light.css";
+@import "themes/dark.css";
+@import "blocks/theme-chooser/theme-chooser.css";
+@import "blocks/tile/tile.css";
+@import "blocks/grid/grid.css";
+
+/* Global positions and sizes.
+ *
+ * Further custom properties may be added to the root element in
+ * component-specific CSS files, so that those properties are available for use
+ * by other components.  For example, a game-tile component might add a root
+ * --game-tile-size property so that game boards can be sized properly before
+ * mounting any tiles.
+ */
+:root {
+  --box-shadow-dp1: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+  0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+  0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+  --box-shadow-dp2: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+  0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+  0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+
+  --border-radius: 4px;
+}
+
+@media (min-width: 480px) {
+  :root {
+    --border-radius: 8px;
+  }
+}
+
+
+body {
+  background-color: rgb(var(--surface));
+  color: rgb(var(--primary));
+  transition: background-color 800ms ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent scrolling. */
+html, body { overflow: hidden; }

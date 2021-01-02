@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme.DARK">
+<head>
+  <meta charset="UTF-8">
+
+  <!--
+    Disable horizontal scrolling.  See also:
+    https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag
+
+    This site has been designed so horizontal scrolling is never necessary.  It
+    does entail a lot of drag and drop gestures though, which touch-screen
+    browsers sometimes mistake for scroll attempts unless we tell them not to.
+
+    Note that this disables zooming in Firefox, but not in Safari.  It does at
+    least seem to prevent mobile Safari from zooming in on `select` elements:
+    When the user clicks a `select` element, mobile Safari's default behavior
+    is to zoom in on the element if its text is "too small," and to leave the
+    user in this strange view that they did not explicitly choose even after an
+    option has been selected.  The transition is jarring, and the behavior
+    potentially confusing.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1,
+              maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+  <!--
+    Run in full-screen mode on iOS.  See also:
+    https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+  -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Match 3</title>
+  <link href="index.css" rel="stylesheet">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  
+</body>
+</html>
