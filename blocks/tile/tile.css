@@ -34,4 +34,8 @@
 
 .tile--dp2:hover {
   background-color: rgb(var(--surface-dp2-hover));
+
+  /* On drag */
+  background-color: rgb(var(--surface-dp2-drag));
+  box-shadow: var(--box-shadow-dp8);
 }

@@ -4,6 +4,6 @@
   --surface-dp1: 44, 44, 44;    /* gray900 + ~5% white overlay */
   --surface-dp2: 49, 49, 49;    /* gray900 + ~7% white overlay */
   --surface-dp2-hover: 52, 55, 55;    /* hover adds ~4% ink/primary overlay */
-  --surface-dp4: 49, 49, 49;    /* gray900 + ~7% white overlay */
+  --surface-dp2-drag: 55, 61, 61;    /* drag adds ~8% ink/primary overlay */
   --bg: 18, 18, 18; 
 }
