@@ -29,7 +29,7 @@ function dropTiles(tiles, m, n) {
       const tile = tiles[i][j];
       const dy = `calc(${-tile.offsetTop}px + ${calcOffset(i)})`;
       tile.style.transform = `translate3d(0, ${dy}, 0)`;
-      tile.style.transition = `transform ${2 * dt / m}s ease-in`;
+      tile.style.transition = `transform ${dt / m}s ease-in`;
     }
   }
 }
