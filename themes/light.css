@@ -3,5 +3,6 @@
   --surface: 194, 178, 128; /* ecru */
   --surface-dp1: 255, 253, 208; /* cream */
   --surface-dp2: 255, 255, 255;
+  --surface-dp2-hover: 245, 244, 244;    /* hover adds ~4% black overlay */
   --bg: 250, 250, 200;
 }

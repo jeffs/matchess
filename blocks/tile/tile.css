@@ -31,3 +31,7 @@
   background-color: rgb(var(--surface-dp2));
   box-shadow: var(--box-shadow-dp2);
 }
+
+.tile--dp2:hover {
+  background-color: rgb(var(--surface-dp2-hover));
+}
