@@ -25,7 +25,7 @@ function dropTiles(tiles, m, n) {
   for (let j = 0; j < n; ++j) {
     let dt = 0;
     for (let i = m; i-- > 0;) {
-      dt += 0.6 + 0.3 * Math.random() * i;
+      dt += 0.6 + 0.4 * Math.random() * i;
       const tile = tiles[i][j];
       const dy = `calc(${-tile.offsetTop}px + ${calcOffset(i)})`;
       tile.style.transform = `translate3d(0, ${dy}, 0)`;
