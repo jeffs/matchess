@@ -1,0 +1,72 @@
+/* Imports in order of increasing dependency.
+ *
+ * Our policy is that styles may depend on prior, but not subsequent, imports.
+ */
+@import "themes/light.css";
+@import "themes/dark.css";
+@import "blocks/theme-chooser/theme-chooser.css";
+@import "blocks/tile/tile.css";
+@import "blocks/grid/grid.css";
+
+:root {
+  /* Dummy property for JavaScript to poll as it waits for CSS to load. */
+  --loaded: 1;
+}
+
+/* Global positions and sizes.
+ *
+ * Further custom properties may be added to the root element in
+ * component-specific CSS files, so that those properties are available for use
+ * by other components.  For example, a game-tile component might add a root
+ * --game-tile-size property so that game boards can be sized properly before
+ * mounting any tiles.
+ */
+:root {
+  --box-shadow-dp1: 0px 1px  3px  0px rgba(0, 0, 0, 0.2),
+                    0px 1px  1px  0px rgba(0, 0, 0, 0.14),
+                    0px 2px  1px -1px rgba(0, 0, 0, 0.12);
+
+  --box-shadow-dp2: 0px 1px  5px  0px rgba(0, 0, 0, 0.2),
+                    0px 2px  2px  0px rgba(0, 0, 0, 0.14),
+                    0px 3px  1px -2px rgba(0, 0, 0, 0.12);
+
+  --box-shadow-dp8: 0px 5px  5px -3px rgba(0, 0, 0, 0.2),
+                    0px 8px 10px  1px rgba(0, 0, 0, 0.14),
+                    0px 3px 14px  2px rgba(0, 0, 0, 0.12);
+
+  --border-radius: 8px;
+}
+
+body {
+  box-sizing: border-box;
+
+  margin: 0 auto 0 auto;
+  padding: 0;
+
+  color: rgb(var(--primary));
+  background-color: rgb(var(--surface));
+  transition: background-color 800ms ease;
+
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+#app {
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 479px) {
+  :root {
+    --border-radius: 4px;
+  }
+
+  #app {
+    flex-direction: column;
+  }
+}

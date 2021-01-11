@@ -1,0 +1,23 @@
+{
+  "name": "match3",
+  "version": "0.0.1",
+  "description": "A simple tile dragging game",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffs/match3.git"
+  },
+  "author": "Jeff Schwab <jeff@unbuggy.com>",
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/jeffs/match3/issues"
+  },
+  "homepage": "https://jeffs.github.com/match3",
+  "devDependencies": {
+    "js-beautify": "^1.13.0"
+  }
+}

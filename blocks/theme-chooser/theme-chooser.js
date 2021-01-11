@@ -1,6 +1,4 @@
-import { theme as selector } from '../../ducks/theme/selectors.js';
-import { Theme } from '../../ducks/theme/actions.js';
-import * as theme from '../../ducks/theme/symbols.js';
+import duck from '../../ducks/theme/theme.js';
 
 function createOption(symbol, label) {
   const option = document.createElement('option');
@@ -9,22 +7,12 @@ function createOption(symbol, label) {
   return option;
 }
 
-export default function ThemeChooser(store) {
+export default function ThemeChooser() {
   const select = document.createElement('select');
   select.classList.add('theme-chooser__select');
-  select.append(createOption(theme.SYSTEM, 'System'));
-  select.append(createOption(theme.LIGHT, 'Light'));
-  select.append(createOption(theme.DARK, 'Dark'));
-
-  store.subscribe(selector, theme => {
-    for (const option of select.children) {
-      option.selected = option.value === theme.description;
-    }
-  });
-
-  select.addEventListener('change', event => {
-    store.dispatch(Theme(event.target.value));
-  });
+  select.append(createOption(duck.symbols.THEME_SYSTEM, 'System'));
+  select.append(createOption(duck.symbols.THEME_LIGHT, 'Light'));
+  select.append(createOption(duck.symbols.THEME_DARK, 'Dark'));
 
   const label = document.createElement('label');
   label.classList.add('theme-chooser');
@@ -32,6 +20,17 @@ export default function ThemeChooser(store) {
   label.append(select);
 
   return {
+    connect(store) {
+      store.subscribe(duck.selectors.theme, theme => {
+        for (const option of select.children) {
+          option.selected = option.value === theme.description;
+        }
+      });
+      select.addEventListener('change', event => {
+        store.dispatch(duck.actions.Theme(event.target.value));
+      });
+    },
+
     node() {
       return label;
     },

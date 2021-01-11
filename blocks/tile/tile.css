@@ -1,41 +1,46 @@
 :root {
-  --tile-size: 10vmin;
-}
-
-@media (min-width: 480px) {
-  :root {
-    --tile-size: 56px;
-  }
+  --tile-size: 56px;
 }
 
 .tile {
-  border-radius: var(--border-radius);
-
-  box-sizing: border-box;
-  overflow: hidden;
-
-  background-color: rgb(var(--surface-dp1));
-  color: rgb(var(--primary));
-
-  box-shadow: var(--box-shadow-dp1);
-
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   height: var(--tile-size);
   width: var(--tile-size);
-  font: calc(var(--tile-size) * 5 / 6) Georgia, sans-serif;
+  box-shadow: var(--box-shadow-dp1);
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: var(--border-radius);
 
+  font-weight: lighter;
+  font-size: calc(var(--tile-size) * 2 / 3);
   user-select: none;
-  text-align: center;
+  line-height: 1.2em; /* Move the glyph a little lower in the tile. */
+  color: rgb(var(--cream));
+
+  /* Background Gradient for Analagous Colors.  See:
+   * https://www.99colors.net/name/dark-brown
+   */
+  background: #652121 linear-gradient(to bottom, #654E21, #652121) no-repeat;
 }
 
 .tile--dp2 {
-  background-color: rgb(var(--surface-dp2));
+  /*background-color: rgb(var(--surface-dp2)); */
   box-shadow: var(--box-shadow-dp2);
 }
 
 .tile--dp2:hover {
   background-color: rgb(var(--surface-dp2-hover));
+}
 
-  /* On drag */
+.tile--dp2:drag {
   background-color: rgb(var(--surface-dp2-drag));
   box-shadow: var(--box-shadow-dp8);
+}
+
+@media (max-width: 699px), (max-height: 479px) {
+  :root {
+    --tile-size: 32px;
+  }
 }

@@ -1,5 +1,60 @@
-:root {
+.grid__tile {
+  cursor: grab;
+}
+
+.grid__tile--drag {
+  cursor: grabbing;
+  position: absolute;
+}
+
+.grid__tile--nodisplay {
+  display: none;
+}
+
+.grid__cell {
+  height: calc(var(--tile-size));
+  width: calc(var(--tile-size));
+  padding: 2px;
+  margin: var(--grid-gutter);
+
+  /* Analagous Colors.  See: https://www.99colors.net/name/dark-brown */
+  background-color: var(--grid-dark);
+
+  text-align: center;
+}
+
+.grid__row {
+  height: var(--tile-size);
+}
+
+.grid__row:nth-child(even) .grid__cell:nth-child(even) {
+  background-color: var(--grid-light);
+}
+
+.grid__row:nth-child(odd) .grid__cell:nth-child(odd) {
+  background-color: var(--grid-light);
+}
+
+.grid__board {
   --grid-gutter: 4px;
+  --grid-light: #656521;
+  --grid-dark: #652121;
+
+  /* The top border is lighter than the sides, whereas the bottom is darker.
+   * This correlates with the box-shadow appearing directly below the element,
+   * with no left/right offset, as is typically the case in Material Design.
+   *
+   * These shades of brown came from the following palette:
+   * https://www.color-hex.com/color-palette/45489
+   */
+  --grid-border-light: #7C3F00;
+  --grid-border-side: #633200;
+  --grid-border-dark: #492201;
+  border-collapse: collapse;
+  border-top: var(--grid-gutter) solid var(--grid-border-light);
+  border-right: var(--grid-gutter) solid var(--grid-border-side);
+  border-bottom: var(--grid-gutter) solid var(--grid-border-dark);
+  border-left: var(--grid-gutter) solid var(--grid-border-side);
 }
 
 .grid {
@@ -8,10 +63,4 @@
 
   background-color: rgb(var(--surface-dp1));
   box-shadow: var(--box-shadow-dp1);
-
-  position: relative;
-}
-
-.grid__tile {
-  position: absolute;
 }

@@ -17,15 +17,7 @@ export function calc(expr) {
   }
 }
 
-/**
- * Peeks at the value of the named global (:root) style property.
- *
- * Note that there's a race condition between JS and CSS on page load:  Root
- * styles may not be loaded by the time JS modules are running.  (For me, this
- * happens maybe once every five page loads, and only on mobile.)  Await the
- * async function `getDocumentStylePropertyValue` to ensure that styles have
- * been loaded before proceeding.
- */
+/** Peeks at the value of the named global (:root) style property. */
 export function getDocumentStylePropertyValueSync(name) {
   const style = window.getComputedStyle(document.documentElement);
   return style.getPropertyValue(name);
@@ -37,6 +29,7 @@ export function getDocumentStylePropertyValueSync(name) {
  * "available" when its string value is non-empty.
  */
 export async function getDocumentStylePropertyValue(name) {
+  const PERIOD = 100; // Poll every 100ms; i.e., at 10Hz.
   const value = getDocumentStylePropertyValueSync(name);
   if (value) {
     return value;
@@ -48,10 +41,21 @@ export async function getDocumentStylePropertyValue(name) {
         window.clearInterval(interval);
         resolve(value);
       }
-    }, 100);
+    }, PERIOD);
   });
 }
 
 export async function getDocumentStylePropertyValues(...names) {
   return Promise.all(names.map(getDocumentStylePropertyValue))
+}
+
+/**
+ * Works around a race condition (between JS and CSS loading) by waiting until
+ * global styles are loaded before initializing state or components.
+ *
+ * For me, JS starts executing before JS is loaded maybe once every five page
+ * loads, and only on mobile. -- @jeffs
+ */
+export async function cssLoaded() {
+  await getDocumentStylePropertyValue('--loaded');
 }

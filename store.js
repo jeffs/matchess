@@ -6,7 +6,7 @@ function notify(watchers, state, cache) {
   );
   for (const [selector, listeners] of watchers.entries()) {
     const value = values.get(selector);
-    if (!cache.has(selector) || cache.get(selector) !== value) {
+    if (cache.get(selector) !== value) {
       for (const listener of listeners) {
         listener(value);
       }
@@ -66,6 +66,7 @@ export default function Store(reducer, state) {
      * results are affected by the state update.
      */
     dispatch(action) {
+      // TODO: Queue actions to avoid reducer reentry.
       if (typeof action === 'function') {
         action(this);
       } else {
@@ -82,11 +83,15 @@ export default function Store(reducer, state) {
     subscribe(selector, listener) {
       const listeners = watchers.get(selector);
       if (listeners) {
+        const value = cache.get(selector);
         listeners.push(listener);
+        listener(value);
       } else {
+        const value = selector(state);
+        cache.set(selector, value);
         watchers.set(selector, [listener]);
+        listener(value);
       }
-      listener(selector(state));
     },
   };
 }

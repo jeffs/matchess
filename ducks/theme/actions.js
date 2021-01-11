@@ -1,21 +1,26 @@
-import * as symbols from './symbols.js';
+import symbols from './symbols.js';
 import parse from './parse.js';
 import assert from '../../assert.js';
 
+/** The system theme may be either light or dark. */
+function SystemTheme(theme) {
+  assert([symbols.THEME_LIGHT, symbols.THEME_DARK].includes(theme));
+  return { type: SystemTheme, theme };
+}
+
 /**
- * The theme may be any of the symbols defined in ./symbols.js: LIGHT, DARK, or
- * SYSTEM to mean the theme should automatically track the host system.  It may
- * also be the string description of any of those symbols.
+ * The theme may be any of the symbols (or their string descriptions) defined
+ * in ./symbols.js.  THEME_SYSTEM means the effective theme should
+ * automatically track the host system.
  */
-export function Theme(theme) {
+function Theme(theme) {
   if (!Object.values(symbols).includes(theme)) {
     theme = parse(theme);
   }
   return { type: Theme, theme };
 }
 
-/** The system theme may be either LIGHT or DARK. */
-export function SystemTheme(theme) {
-  assert([symbols.LIGHT, symbols.DARK].includes(theme));
-  return { type: SystemTheme, theme };
-}
+export default {
+  SystemTheme,
+  Theme,
+};
